@@ -4,3 +4,8 @@
 .material-icons {
     font-size: 4rem; 
 }
+
+#modal1 {
+    height: auto;
+    width: auto;
+}

@@ -4,53 +4,54 @@
 
 let employeeArr = [
 {
-  "name":"Ahmed",
-  "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+  "name":"Jane",
+  "photo":"https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&h=350",
   "scores":[
-      5,
       1,
-      4,
-      4,
-      5,
       1,
-      2,
-      5,
-      4,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
       1
     ]
 },
 {
-    "name":"Alvaro",
-    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "name":"Obama",
+    "photo":"https://bloximages.chicago2.vip.townnews.com/stljewishlight.com/content/tncms/assets/v3/editorial/b/03/b037b0de-4830-11e1-a8ed-001871e3ce6c/4f216e3f0426f.image.jpg?resize=500%2C680",
     "scores":[
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1,
-        1
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
       ]
   },
   {
-    "name":"DeOnna",
-    "photo":"https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/6/005/064/1bd/3435aa3.jpg",
+    "name":"Beyonce",
+    "photo":"https://i.pinimg.com/236x/15/ef/8a/15ef8a51ef862cfd26575601fd82bc76--beyonce-big-hair.jpg",
     "scores":[
-        2,
-        1,
         5,
-        3,
-        1,
-        2,
-        1,
-        4,
-        4,
-        1
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5,
+        5
       ]
   }
 ]
 
 module.exports = employeeArr;
+

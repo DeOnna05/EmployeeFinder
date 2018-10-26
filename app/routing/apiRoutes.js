@@ -6,13 +6,13 @@ const employeeArr = require('../data/employees');
 //get call which calls back JSON of all employees in array
 router.get('/employees', function (req, res) {
     res.json(employeeArr);
-    console.log(employeeArr);
+   
 });
 
 router.post('/employees', function (req, res) {
     let employee = req.body;
-    console.log(employee)
-    employeeArr.push(employee);
+    
+   
     //creating variable to store the lowest difference in
     let lowestDifference = null;
     //creating a variable to store the employee with the lowest difference
@@ -35,9 +35,11 @@ router.post('/employees', function (req, res) {
             //...assign total difference to lowest difference...
             lowestDifference = totalDifference;
             //...and assign the current employee's photo to best match variable
-            bestMatch = currentEmployee.photo;
+            bestMatch = currentEmployee;
         }
     }
+
+    employeeArr.push(employee);
     //display best match photo
     return res.json(bestMatch);
 });

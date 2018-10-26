@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, '/app/public')));
 
 //link to routes pages - tells app to use these routes
 app.use('/api', apiRoutes);
-app.use('*', htmlRoutes);
+app.use('/', htmlRoutes);
 
 //server listener
 app.listen(PORT, function(){

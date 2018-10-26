@@ -13,6 +13,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Connecting my style sheet -->
     <link rel="stylesheet" href="./css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
 </head>
 <title>Employee Finder Survey Page</title>
 </head>
@@ -23,29 +25,41 @@
         <hr>
         <h4 class="bold">About You</h4>
         <div class="row">
-            <form class="col s12">
-                <div class="row">
-                    <div class="input-field col s8">
-                        <input placeholder="Required" id="first_name" type="text" class="validate">
-                        <label for="first_name"></label>
-                        First Name
-                    </div>
+            <!-- Modal -->
+            <div id="modal1" class="modal col s10">
+                <div class="modal-content">
+
+                    <h4 class="bold">Your Best Match is...</h4>
+                    <h4 class="matchName"></h4>
+
+                    <img id="picture" src="" alt="">
+
                 </div>
-                <div class="row">
-                    <div class="input-field col s8">
-                        <input id="link_image" type="text" class="validate">
-                        <label for="link_image"></label>
-                        Link to Photo Image
-                    </div>
+                <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
                 </div>
-            </form>
+            </div>
+
+            <div class="row">
+                <div class="input-field col s8">
+                    <input id="first_name" type="text" class="validate">
+                    <label for="first_name">First Name</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s8">
+                    <input id="link_image" type="text" class="validate">
+                    <label for="link_image">Paste Link to Photo Image</label>
+                </div>
+            </div>
+
         </div>
         <hr>
         <h4 class="bold">Question 1</h4>
         <label>
             <h5 class="bold">Your mind is always buzzing with unexplored ideas and plans.</h5>
         </label>
-        <select class="browser-default">
+        <select id="q1" class="browser-default">
             <option value="" disabled selected>Select an option</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -58,7 +72,7 @@
         <label>
             <h5 class="bold">Generally speaking, you rely more on your experience than your imagination.</h5>
         </label>
-        <select class="browser-default">
+        <select id="q2" class="browser-default">
             <option value="" disabled selected>Select an option</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -71,7 +85,7 @@
         <label>
             <h5 class="bold">You find it easy to stay relaxed and focused even when there is some pressure.</h5>
         </label>
-        <select class="browser-default">
+        <select id="q3" class="browser-default">
             <option value="" disabled selected>Select an option</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -84,7 +98,7 @@
         <label>
             <h5 class="bold">You rarely do something just out of sheer curiosity.</h5>
         </label>
-        <select class="browser-default">
+        <select id="q4" class="browser-default">
             <option value="" disabled selected>Select an option</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -97,7 +111,7 @@
         <label>
             <h5 class="bold">People can rarely upset you.</h5>
         </label>
-        <select class="browser-default">
+        <select id="q5" class="browser-default">
             <option value="" disabled selected>Select an option</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -110,7 +124,7 @@
         <label>
             <h5 class="bold">It is often difficult for you to relate to other people’s feelings.</h5>
         </label>
-        <select class="browser-default">
+        <select id="q6" class="browser-default">
             <option value="" disabled selected>Select an option</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -123,7 +137,7 @@
         <label>
             <h5 class="bold">In a discussion, truth should be more important than people’s sensitivities.</h5>
         </label>
-        <select class="browser-default">
+        <select id="q7" class="browser-default">
             <option value="" disabled selected>Select an option</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -136,7 +150,7 @@
         <label>
             <h5 class="bold">You rarely get carried away by fantasies and ideas.</h5>
         </label>
-        <select class="browser-default">
+        <select id="q8" class="browser-default">
             <option value="" disabled selected>Select an option</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -150,7 +164,7 @@
             <h5 class="bold">You think that everyone’s views should be respected regardless of whether they are
                 supported by facts or not.</h5>
         </label>
-        <select class="browser-default">
+        <select id="q9" class="browser-default">
             <option value="" disabled selected>Select an option</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -163,7 +177,7 @@
         <label>
             <h5 class="bold">You feel more energetic after spending time with a group of people.</h5>
         </label>
-        <select class="browser-default">
+        <select id="q10" class="browser-default">
             <option value="" disabled selected>Select an option</option>
             <option value="1">1 (Strongly Disagree)</option>
             <option value="2">2</option>
@@ -172,20 +186,38 @@
             <option value="5">5 (Strongly Agree)</option>
         </select>
         <br>
-        
-        <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+
+        <button class="btn waves-effect waves-light" id="submit" type="submit" name="action">Submit
             <i class="material-icons right">send</i>
         </button>
-        
+
         <br>
         <br>
         <hr>
+        <a href="/api/employees" id="viewList" class="waves-effect waves-light btn">API Employees List</a>
     </div>
+    <br>
+
+    <footer class="page-footer">
+        <div class="row">
+            <div class="col l6 s12">
+                <div class="container">
+                    © 2018 Copyright
+                </div>
+            </div>
+        </div>
+     </div>
+    </footer>
+
+
+
+
 
 
 
     <!--JavaScript at end of body for optimized loading-->
-    <script type="text/javascript" src="./js/materialize.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script src="/js/survey.js"></script>
 </body>
 
