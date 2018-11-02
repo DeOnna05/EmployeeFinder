@@ -1,7 +1,6 @@
 $(document).ready(function () {
-    $('.modal').modal();
-
-})
+    $('#modal1').modal();
+});
 
 $('#submit').on('click', function () {
     let surveyForm = {
@@ -20,6 +19,38 @@ $('#submit').on('click', function () {
             $('#q10').val(),
         ]
     }
+
+const post = function(){
+    //if all fields are completed, call will grab form info and run post function
+    $.ajax({
+        url: '/api/employees',
+        method: 'POST',
+        data: surveyForm
+    }).then(function (response) {
+        //putting the link to the picture and name in variables
+        let picture = response.photo;
+        let name = response.name;
+        $('#modal1').modal('open');
+        $('#picture').attr('src', picture);
+        $('.matchName').text(name);
+        $("#first_name").val('');
+        $("#link_image").val('');
+        $('#q1').val('');
+        $('#q2').val('');
+        $('#q3').val('');
+        $('#q4').val('');
+        $('#q5').val('');
+        $('#q6').val('');
+        $('#q7').val('');
+        $('#q8').val('');
+        $('#q9').val('');
+        $('#q10').val('');
+
+    })
+
+}
+
+
     console.log(surveyForm)
     let pictureInput = surveyForm.photo;
     let nameInput = surveyForm.name;
@@ -30,34 +61,13 @@ $('#submit').on('click', function () {
         if (pictureInput === "" || nameInput === "" || scoreInput[i] === null) {
             console.log('Please fill out all fields');
             
-            return $('#modal2').modal('open') ;
-        }
-    } {
-        //if all fields are completed, call will grab form info and run post function
-        $.ajax({
-            url: '/api/employees',
-            method: 'POST',
-            data: surveyForm
-        }).then(function (response) {
-            //putting the link to the picture and name in variables
-            let picture = response.photo;
-            let name = response.name;
-            $('.modal').modal('open');
-            $('#picture').attr('src', picture);
-            $('.matchName').text(name);
-            $("#first_name").val('');
-            $("#link_image").val('');
-            $('#q1').val('');
-            $('#q2').val('');
-            $('#q3').val('');
-            $('#q4').val('');
-            $('#q5').val('');
-            $('#q6').val('');
-            $('#q7').val('');
-            $('#q8').val('');
-            $('#q9').val('');
-            $('#q10').val('');
+            return $('#modal2').modal() ;
 
-        })
+        } else {
+            post();
+        }
     }
 })
+
+      
+        
